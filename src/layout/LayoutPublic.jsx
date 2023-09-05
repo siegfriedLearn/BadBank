@@ -7,6 +7,7 @@ const LayoutPublic = (  ) => {
     <>
         <Nav/>
         <main>
+            {/* Outlet maneja la ruta que se va a cargar */}
             <Outlet/>
         </main>
         <footer>Fotter</footer>
