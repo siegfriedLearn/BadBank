@@ -7,7 +7,7 @@ export const UserContext = createContext(null);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <UserContext.Provider value={{ name: "Carlos" }}>
+    <UserContext.Provider value={[]}>
       <RouterProvider router={router} />
     </UserContext.Provider>
   </React.StrictMode>
