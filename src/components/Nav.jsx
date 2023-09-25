@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 
 export const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-info-subtle">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={"/"}>
-          Bad Bank
-        </Link>
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -20,39 +18,45 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
+          <Link 
+        className="nav-link" 
+        aria-current="page"
+        to={"/"}>
+          Bad Bank
+        </Link>
             <Link
-              className="nav-link active"
+              className="nav-link"
               aria-current="page"
               to={"/createaccount"}
             >
               Create Account
             </Link>
-            <Link className="nav-link active" aria-current="page" to={"/login"}>
+            <Link className="nav-link" aria-current="page" to={"/login"}>
               Login
             </Link>
             <Link
-              className="nav-link active"
+              className="nav-link"
               aria-current="page"
               to={"/deposit"}
             >
               Deposit
             </Link>
             <Link
-              className="nav-link active"
+              className="nav-link"
               aria-current="page"
               to={"/withdraw"}
             >
               Withdraw
             </Link>
             <Link
-              className="nav-link active"
+              className="nav-link"
               aria-current="page"
               to={"/balance"}
             >
               Balance
             </Link>
             <Link
-              className="nav-link active"
+              className="nav-link"
               aria-current="page"
               to={"/alldata"}
             >
