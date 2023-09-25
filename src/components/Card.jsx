@@ -9,6 +9,7 @@ export const Card = (props) => {
   }
 
   return (
+    <div className="d-flex flex-column justify-content-center" style={{padding:50}}>
    <div className={classes()} style={{maxWidth: "100rem"}}>
     <h3 className="card-header">{props.header}
     </h3>
@@ -18,7 +19,7 @@ export const Card = (props) => {
         {props.body}
         {props.status && (<div id="createStatus">{props.status}</div>)}
       </div>
-    
+   </div>
    </div>
   );
 };
