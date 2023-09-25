@@ -8,7 +8,8 @@ export const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const ctx = useContext(UserContext);
+  let ctx = useContext(UserContext);
+  //console.log(ctx)
 
   function validate(field, label) {
     if (!field) {
@@ -25,7 +26,7 @@ export const CreateAccount = () => {
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
     console.log(ctx);
-    ctx.push({ name, email, password, balance: 100 });
+    //UserContext={ name, email, password, balance: 100 };
     setShow(false);
   }
 
@@ -84,10 +85,12 @@ export const CreateAccount = () => {
               type="submit"
               className="btn btn-success mt-3"
               onClick={handleCreate}
+              disabled = {name == "" || email == "" || password == ""}
             >
               Create Account
             </button>
             <br />
+            {ctx.name}
           </form>
         ) : (
           <>
