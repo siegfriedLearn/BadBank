@@ -9,7 +9,7 @@ export const Card = (props) => {
   }
 
   return (
-    <div className="d-flex flex-column justify-content-center" style={{padding:50}}>
+    <div className="d-flex flex-column justify-content-center" style={{padding:40}}>
    <div className={classes()} style={{maxWidth: "100rem"}}>
     <h3 className="card-header">{props.header}
     </h3>

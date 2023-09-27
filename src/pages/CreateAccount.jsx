@@ -26,7 +26,9 @@ export const CreateAccount = () => {
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
     console.log(ctx);
-    //UserContext={ name, email, password, balance: 100 };
+    //ctx.push({ name, email, password, balance: 100 });
+    const user = {name, email, password, balance: 100};
+    localStorage.setItem('user', JSON.stringify(user));
     setShow(false);
   }
 

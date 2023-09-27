@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../main";
+//import { UserContext } from "../main";
 import { Card } from "../components/Card";
 import { Balance } from "../components/Balance";
 
@@ -7,7 +7,9 @@ export const Deposit = () => {
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
   const [deposit, setDeposit] = useState("");
-  const ctx = useContext(UserContext);
+  //const ctx = useContext(UserContext);
+
+  
 
   function validate(field, label) {
     if (!field) {
@@ -21,8 +23,13 @@ export const Deposit = () => {
   function handleCreate() {
     console.log(deposit);
     if (!validate(deposit, "deposit")) return;
-    console.log(ctx);
+    //console.log(ctx);
     //ctx.push({ name, email, password, balance: 100 });
+    const user = JSON.parse(localStorage.getItem("user"));
+    let newBalance = parseInt(user.balance)+ parseInt(deposit);
+    //console.log(newBalance)
+    user.balance = newBalance;
+    localStorage.setItem('user', JSON.stringify(user));
     setShow(false);
   }
 
@@ -42,7 +49,7 @@ export const Deposit = () => {
       status={status}
       body={
         show ? (
-          <form>
+          <form onSubmit={handleCreate}>
             Deposit
             <br />
             <input
@@ -50,14 +57,14 @@ export const Deposit = () => {
               className="form-control"
               id="deposit"
               placeholder="Enter deposit"
-              value={name}
+              value={deposit}
               onChange={(e) => setDeposit(e.currentTarget.value)}
               required
             />
             <button
               type="submit"
               className="btn btn-success mt-3"
-              onClick={handleCreate}
+              //onClick={handleCreate}
               disabled = {deposit == ""}
             >
               Deposit

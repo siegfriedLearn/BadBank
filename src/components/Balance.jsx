@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../main";
+//import { useContext, useState } from "react";
+//import { UserContext } from "../main";
 import { Card } from "../components/Card";
 
 export const Balance = () => {
-  const ctx = useContext(UserContext);
+  //const ctx = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Card
@@ -12,7 +13,12 @@ export const Balance = () => {
       header="Balance"
       title="This is your account balance"
       text="Info"
-      body={`Name ${ctx.name}`}
+      body={
+        <>
+          <p>Name: {user.name}</p>
+          <p>Balance: {user.balance}</p>
+        </>
+      }
     />
   );
 };
