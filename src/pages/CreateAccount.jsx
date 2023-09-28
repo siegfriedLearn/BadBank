@@ -27,6 +27,7 @@ export const CreateAccount = () => {
   }
 
   function handleCreate() {
+    
     console.log(name, email, password);
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
