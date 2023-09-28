@@ -34,12 +34,12 @@ console.log(login);
   }
 
   function handleCreate() {
-    console.log(deposit);
     if (!validate(deposit, "deposit")) return;
     const user = JSON.parse(localStorage.getItem("user"));
     let newBalance = parseInt(user.balance)+ parseInt(deposit);
     user.balance = newBalance;
     localStorage.setItem('user', JSON.stringify(user));
+    setUser(consulta());
     setShow(false);
   }
 
@@ -51,8 +51,9 @@ console.log(login);
 
   return (
     <>
-    {login ?     <div>
-    <Balance></Balance>
+    {login ?    
+     <div>
+    <Balance user={user}></Balance>
     <Card
       bgcolor="light"
       txtcolor="color"

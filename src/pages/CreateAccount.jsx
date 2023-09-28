@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Formik, Field, Form } from 'formik';
 import Swal from 'sweetalert2';
 import { Card } from "../components/Card";
 import { consulta } from '../helpers/consulta'

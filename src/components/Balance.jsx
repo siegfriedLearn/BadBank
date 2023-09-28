@@ -1,11 +1,9 @@
-//import { useContext, useState } from "react";
-//import { UserContext } from "../main";
 import { Card } from "../components/Card";
 
-const user = JSON.parse(localStorage.getItem("user"));
 
-export const Balance = () => {
-  //const ctx = useContext(UserContext);
+export const Balance = ({user}) => {
+
+  //const [user, setUser] = useState(info);
   
 
   return (
