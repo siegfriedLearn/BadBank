@@ -31,7 +31,7 @@ export const CreateAccount = () => {
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    const user = {name, email, password, balance: 100};
+    const user = {name, email, password, balance: 100,transacciones:[]};
     localStorage.setItem('user', JSON.stringify(user));
     setShow(false);
   }

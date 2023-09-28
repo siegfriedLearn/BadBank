@@ -49,6 +49,7 @@ console.log(login);
       return;
     }
     user.balance = total;
+    user.transacciones.push({tipo:"Retiro", value: retiro, fecha: new Date()});
     localStorage.setItem('user', JSON.stringify(user));
     setUser(consulta());
     setShow(false);

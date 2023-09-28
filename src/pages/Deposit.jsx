@@ -38,6 +38,7 @@ export const Deposit = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     let newBalance = parseInt(user.balance)+ parseInt(deposit);
     user.balance = newBalance;
+    user.transacciones.push({tipo:"Deposito", value: deposit, fecha: new Date()});
     localStorage.setItem('user', JSON.stringify(user));
     setUser(consulta());
     setShow(false);
