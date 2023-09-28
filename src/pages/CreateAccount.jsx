@@ -91,7 +91,7 @@ export const CreateAccount = () => {
               type="submit"
               className="btn btn-success mt-3"
               //onClick={handleCreate}
-              disabled = {name == "" || email == "" || password.length < 7}
+              disabled = {name == "" || email == "" || password.length < 8}
             >
               Create Account
             </button>

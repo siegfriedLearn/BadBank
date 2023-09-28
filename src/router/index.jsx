@@ -5,7 +5,7 @@ import { Deposit } from "../pages/Deposit";
 
 import LayoutPublic from "../layout/LayoutPublic";
 import { AllData } from "../pages/AllData";
-import { Balance } from "../pages/Balance";
+import { BalancePage } from "../pages/BalancePage";
 import { CreateAccount } from "../pages/CreateAccount";
 import { Login } from "../pages/Login";
 import { Withdraw } from "../pages/Withdraw";
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/balance",
-        element: <Balance/>,
+        element: <BalancePage/>,
       },
       {
         path: "/createaccount",

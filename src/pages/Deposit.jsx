@@ -12,7 +12,7 @@ export const Deposit = () => {
   const [user, setUser] = useState(consulta());
   const [login, setLogin] = useState(consultaLogin());
   
-console.log(login);
+//console.log(login);
 
   function validate(field, label) {
     if (!field) {
