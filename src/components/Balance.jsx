@@ -2,9 +2,11 @@
 //import { UserContext } from "../main";
 import { Card } from "../components/Card";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 export const Balance = () => {
   //const ctx = useContext(UserContext);
-  const user = JSON.parse(localStorage.getItem("user"));
+  
 
   return (
     <Card
@@ -15,8 +17,8 @@ export const Balance = () => {
       text="Info"
       body={
         <>
-          <p>Name: {user.name}</p>
-          <p>Balance: {user.balance}</p>
+          {user && <p>Name: {user.name}</p>}
+          {user && <p>Balance: {user.balance}</p>}
         </>
       }
     />

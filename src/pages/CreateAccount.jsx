@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../main";
+import { useState } from "react";
 import { Card } from "../components/Card";
+import Swal from 'sweetalert2';
+import { consulta } from '../helpers/consulta'
 
 export const CreateAccount = () => {
   const [show, setShow] = useState(true);
@@ -8,13 +9,18 @@ export const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let ctx = useContext(UserContext);
-  //console.log(ctx)
+ 
 
   function validate(field, label) {
     if (!field) {
       setStatus(`Error ${label}`);
       setTimeout(() => setStatus("", 3000));
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `El campo ${label} es obligatorio`,
+        footer: 'Completa el formulario e intenta nuevamente'
+      })
       return false;
     }
     return true;
@@ -25,8 +31,6 @@ export const CreateAccount = () => {
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    console.log(ctx);
-    //ctx.push({ name, email, password, balance: 100 });
     const user = {name, email, password, balance: 100};
     localStorage.setItem('user', JSON.stringify(user));
     setShow(false);
@@ -92,7 +96,6 @@ export const CreateAccount = () => {
               Create Account
             </button>
             <br />
-            {ctx.name}
           </form>
         ) : (
           <>

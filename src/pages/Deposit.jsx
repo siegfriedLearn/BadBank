@@ -1,15 +1,18 @@
-import { useContext, useState } from "react";
-//import { UserContext } from "../main";
+import { useState } from "react";
+import Swal from 'sweetalert2';
 import { Card } from "../components/Card";
 import { Balance } from "../components/Balance";
+import { consulta, consultaLogin } from '../helpers/consulta'
+
 
 export const Deposit = () => {
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
   const [deposit, setDeposit] = useState("");
-  //const ctx = useContext(UserContext);
-
+  const [user, setUser] = useState(consulta());
+  const [login, setLogin] = useState(consultaLogin());
   
+console.log(login);
 
   function validate(field, label) {
     if (!field) {
@@ -17,17 +20,24 @@ export const Deposit = () => {
       setTimeout(() => setStatus("", 3000));
       return false;
     }
+    if(field<0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No puedes depositar una cantidad negativa',
+        footer: 'Intenta ingresando una cantidad mayor a 0'
+      })
+      return false;
+    }
+    // if(){}
     return true;
   }
 
   function handleCreate() {
     console.log(deposit);
     if (!validate(deposit, "deposit")) return;
-    //console.log(ctx);
-    //ctx.push({ name, email, password, balance: 100 });
     const user = JSON.parse(localStorage.getItem("user"));
     let newBalance = parseInt(user.balance)+ parseInt(deposit);
-    //console.log(newBalance)
     user.balance = newBalance;
     localStorage.setItem('user', JSON.stringify(user));
     setShow(false);
@@ -41,6 +51,7 @@ export const Deposit = () => {
 
   return (
     <>
+    {login ?     <div>
     <Balance></Balance>
     <Card
       bgcolor="light"
@@ -49,7 +60,7 @@ export const Deposit = () => {
       status={status}
       body={
         show ? (
-          <form onSubmit={handleCreate}>
+          <>
             Deposit
             <br />
             <input
@@ -64,13 +75,13 @@ export const Deposit = () => {
             <button
               type="submit"
               className="btn btn-success mt-3"
-              //onClick={handleCreate}
+              onClick={handleCreate}
               disabled = {deposit == ""}
             >
               Deposit
             </button>
             <br />
-          </form>
+          </>
         ) : (
           <>
             <h5>Success</h5>
@@ -81,6 +92,16 @@ export const Deposit = () => {
         )
       }
     />
-    </>
+    </div> : 
+    <Card
+    bgcolor="light"
+      txtcolor="color"
+      header="Deposit"
+      status={status}
+      body="Debes hacer login antes de usar esta opción"
+    />}
+
+    
+ </>
   )
 }
