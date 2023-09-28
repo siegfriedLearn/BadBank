@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Card } from "../components/Card";
+import { Formik, Field, Form } from 'formik';
 import Swal from 'sweetalert2';
+import { Card } from "../components/Card";
 import { consulta } from '../helpers/consulta'
 
 export const CreateAccount = () => {
@@ -9,7 +10,6 @@ export const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
 
   function validate(field, label) {
     if (!field) {
@@ -52,8 +52,8 @@ export const CreateAccount = () => {
       status={status}
       body={
         show ? (
-          <form>
-            Name
+          <form onSubmit={handleCreate}>
+            { name ? <>Name</> :<div style={{color:"purple"}}>Debes completar el campo nombre</div>}
             <br />
             <input
               type="text"
@@ -65,7 +65,7 @@ export const CreateAccount = () => {
               required
             />
             <br />
-            Email address
+            { email ? <>Email</> :<div style={{color:"purple"}}>Debes completar el correo</div>}
             <br />
             <input
               type="email"
@@ -77,7 +77,7 @@ export const CreateAccount = () => {
               required
             />
             <br />
-            Password
+            { password.length > 7 ? <>Password</> :<div style={{color:"purple"}}>Tu contraseña debe contener al menos 8 caracteres</div>}
             <br />
             <input
               type="password"
@@ -91,8 +91,8 @@ export const CreateAccount = () => {
             <button
               type="submit"
               className="btn btn-success mt-3"
-              onClick={handleCreate}
-              disabled = {name == "" || email == "" || password == ""}
+              //onClick={handleCreate}
+              disabled = {name == "" || email == "" || password.length < 7}
             >
               Create Account
             </button>
