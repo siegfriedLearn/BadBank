@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       {
         //index: true,
         // path: "/",
-        path: "BadBank/",
+        path: "/BadBank/",
         element: <Home />,
        
       },
