@@ -25,19 +25,20 @@ export const Login = () => {
     return true;
   }
 
-  function handleLogin() {
-    //event.preventDefault()    //console.log(name, email, password);
+  function handleLogin(event) {
+    event.preventDefault()    //console.log(name, email, password);
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
     if(user.email === email && user.password == password ){
-      // Swal.fire(
-      //   'Muy bien!',
-      //   'Te has logeado correctamente!',
-      //   'success'
-      // )
-      setUser(consulta());
       localStorage.setItem("login", JSON.stringify('ok'));
-      return;
+      Swal.fire(
+        'Muy bien!',
+        'Te has logeado correctamente!',
+        'success'
+      )
+      console.log(consultaLogin())
+      setLogin(consultaLogin());
+      
     } else{
       Swal.fire({
         icon: "error",
@@ -63,7 +64,7 @@ export const Login = () => {
           status={status}
           body={
             user ? (
-              <form >
+              <form onSubmit={(event)=>handleLogin(event)}>
                 {email ? (
                   <>Email</>
                 ) : (
@@ -102,7 +103,7 @@ export const Login = () => {
                 <button
                   type="submit"
                   className="btn btn-success mt-3"
-                  onClick={handleLogin}
+                  //onClick={handleLogin}
                   disabled={ email == "" || password.length < 8}
                 >
                   Login

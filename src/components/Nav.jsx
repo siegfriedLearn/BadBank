@@ -4,6 +4,7 @@ export const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-info-subtle">
       <div className="container-fluid">
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -17,9 +18,12 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link className="nav-link" aria-current="page" to={"/BadBank/"}>
-              Bad Bank
-            </Link>
+          <Link 
+        className="nav-link" 
+        aria-current="page"
+        to={"/BadBank/"}>
+          Bad Bank
+        </Link>
             <Link
               className="nav-link"
               aria-current="page"
@@ -27,11 +31,7 @@ export const Nav = () => {
             >
               Create Account
             </Link>
-            <Link
-              className="nav-link"
-              aria-current="page"
-              to={"/BadBank/login"}
-            >
+            <Link className="nav-link" aria-current="page" to={"/BadBank/login"}>
               Login
             </Link>
             <Link
