@@ -21,7 +21,7 @@ export const Nav = () => {
           <Link 
         className="nav-link" 
         aria-current="page"
-        to={"/"}>
+        to={"/BadBank/"}>
           Bad Bank
         </Link>
             <Link
@@ -51,7 +51,7 @@ export const Nav = () => {
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/balance"}
+              to={"/BadBank/balance"}
             >
               Balance
             </Link>

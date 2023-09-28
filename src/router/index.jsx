@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         // path: "/balance",
-        path: "/balance",
+        path: "/BadBank//balance",
         element: <BalancePage/>,
       },
       {
