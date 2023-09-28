@@ -12,7 +12,7 @@ import { Withdraw } from "../pages/Withdraw";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/BadBank/",
     element: <LayoutPublic></LayoutPublic>,
     errorElement: <h1>Ups, tenemos un problema con esta página</h1>,
     children: [
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         // path: "/balance",
-        path: "/BadBank/balance",
+        path: "/balance",
         element: <BalancePage/>,
       },
       {
