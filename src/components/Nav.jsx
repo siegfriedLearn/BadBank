@@ -4,7 +4,6 @@ export const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-info-subtle">
       <div className="container-fluid">
-        
         <button
           className="navbar-toggler"
           type="button"
@@ -18,33 +17,34 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-          <Link 
-        className="nav-link" 
-        aria-current="page"
-        to={"/BadBank/"}>
-          Bad Bank
-        </Link>
+            <Link className="nav-link" aria-current="page" to={"/BadBank/"}>
+              Bad Bank
+            </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/createaccount"}
+              to={"/BadBank/createaccount"}
             >
               Create Account
             </Link>
-            <Link className="nav-link" aria-current="page" to={"/login"}>
+            <Link
+              className="nav-link"
+              aria-current="page"
+              to={"/BadBank/login"}
+            >
               Login
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/deposit"}
+              to={"/BadBank/deposit"}
             >
               Deposit
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/withdraw"}
+              to={"/BadBank/withdraw"}
             >
               Withdraw
             </Link>
@@ -58,7 +58,7 @@ export const Nav = () => {
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/alldata"}
+              to={"/BadBank/alldata"}
             >
               All Data
             </Link>
