@@ -24,27 +24,33 @@ export const router = createBrowserRouter([
        
       },
       {
-        path: "/alldata",
+        // path: "/alldata",
+        path: "/BadBank/alldata",
         element: <AllData/>,
       },
       {
-        path: "/balance",
+        // path: "/balance",
+        path: "/BadBank/balance",
         element: <BalancePage/>,
       },
       {
-        path: "/createaccount",
+        // path: "/createaccount",
+        path: "/BadBank/createaccount",
         element: <CreateAccount/>,
       },
       {
-        path: "/deposit",
+        // path: "/deposit",
+        path: "/BadBank/deposit",
         element: <Deposit />,
       },
       {
-        path: "/login",
+        // path: "/login",
+        path: "/BadBank/login",
         element: <Login/>,
       },
       {
-        path: "/withdraw",
+        // path: "/withdraw",
+        path: "/BadBank/withdraw",
         element: <Withdraw />,
       },
     ],

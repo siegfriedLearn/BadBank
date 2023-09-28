@@ -10,7 +10,7 @@ export const Home = () => {
       header="Bad Bank Home Page"
       title="Welcome to the Bad Bank"
       text="You can use this bank"
-      body={<img src="/banco.png" className="card-img-top" alt="" ></img>}
+      body={<img src="./banco.png" className="card-img-top" alt="" ></img>}
     />
     
   )
