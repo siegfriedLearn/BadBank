@@ -4,6 +4,7 @@ import { Nav } from "../components/nav"
 
 
 
+
 const LayoutPublic = (  ) => {
 
     return (
