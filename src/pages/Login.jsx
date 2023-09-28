@@ -26,16 +26,18 @@ export const Login = () => {
   }
 
   function handleLogin() {
-    //console.log(name, email, password);
+    //event.preventDefault()    //console.log(name, email, password);
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
     if(user.email === email && user.password == password ){
-      Swal.fire(
-        'Muy bien!',
-        'Te has logeado correctamente!',
-        'success'
-      )
+      // Swal.fire(
+      //   'Muy bien!',
+      //   'Te has logeado correctamente!',
+      //   'success'
+      // )
+      setUser(consulta());
       localStorage.setItem("login", JSON.stringify('ok'));
+      return;
     } else{
       Swal.fire({
         icon: "error",
