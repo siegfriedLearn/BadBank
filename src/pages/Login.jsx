@@ -63,7 +63,7 @@ export const Login = () => {
           status={status}
           body={
             user ? (
-              <form onSubmit={handleLogin}>
+              <form >
                 {email ? (
                   <>Email</>
                 ) : (
@@ -102,6 +102,7 @@ export const Login = () => {
                 <button
                   type="submit"
                   className="btn btn-success mt-3"
+                  onClick={handleLogin}
                   disabled={ email == "" || password.length < 8}
                 >
                   Login
