@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 export const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-info-subtle">
+    // 
+    <nav className="navbar navbar-expand-lg fw-bolder" style={{background: "#8F7FE8"}}>
       <div className="container-fluid">
         
         <button
@@ -18,9 +19,9 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-          <Link 
-        className="nav-link" 
-        aria-current="page"
+          <Link
+        className="nav-link"
+        // aria-current="page"
         to={"/BadBank/"}>
           Bad Bank
         </Link>

@@ -7,9 +7,9 @@ export const Home = () => {
       <Card
       bgcolor="light"
       txtcolor="color"
-      header="Bad Bank Home Page"
-      title="Welcome to the Bad Bank"
-      text="You can use this bank"
+      header="Bad Bank"
+      title="Bienvenido a Bad Bank"
+      text="Una vez registrado te regalamos $100"
       body={<img src="./banco.png" className="card-img-top" alt="" ></img>}
     />
     
