@@ -34,10 +34,14 @@ export const Login = () => {
       Swal.fire(
         'Muy bien!',
         'Te has logeado correctamente!',
-        'success'
+        'Serás redirigido a la página de Balance'
       )
       console.log(consultaLogin())
       setLogin(consultaLogin());
+      setTimeout(() => {
+        window.location.href = "./balance"
+      }, 1300);
+      
       
     } else{
       Swal.fire({
@@ -121,9 +125,9 @@ export const Login = () => {
         <Card
           bgcolor="light"
           txtcolor="color"
-          header="Deposit"
+          header="Login"
           status={status}
-          body="Login ok"
+          body={<><p>Login Ok</p><p>Puedes acceder a cualquiera de nuestras funcionalidades</p></>}
         />
       )}
     </>

@@ -19,7 +19,6 @@ export const AllData = () => {
         <table className="table table-bordered" /*hidden={hiddenTable}*/>
           <thead>
             <tr>
-              {/* <th scope="col">ID</th> */}
               <th scope="col">Tipo</th>
               <th scope="col">Valor</th>
               <th scope="col">Fecha</th>

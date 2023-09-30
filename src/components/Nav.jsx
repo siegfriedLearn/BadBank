@@ -1,11 +1,24 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, redirect } from "react-router-dom";
+
+import { consulta, consultaLogin } from "../helpers/consulta";
 
 export const Nav = () => {
+  const [login, setLogin] = useState(consultaLogin());
+
+  function handleLogout(){
+    localStorage.removeItem('login');
+    setLogin(consultaLogin());
+    window.location.href = "./login";
+  }
+
   return (
-    // 
-    <nav className="navbar navbar-expand-lg fw-bolder" style={{background: "#8F7FE8"}}>
+    //
+    <nav
+      className="navbar navbar-expand-lg fw-bolder"
+      style={{ background: "#8F7FE8" }}
+    >
       <div className="container-fluid">
-        
         <button
           className="navbar-toggler"
           type="button"
@@ -19,12 +32,13 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-          <Link
-        className="nav-link"
-        // aria-current="page"
-        to={"/BadBank/"}>
-          Bad Bank
-        </Link>
+            <Link
+              className="nav-link"
+              // aria-current="page"
+              to={"/BadBank/"}
+            >
+              Bad Bank
+            </Link>
             <Link
               className="nav-link"
               aria-current="page"
@@ -32,7 +46,11 @@ export const Nav = () => {
             >
               Create Account
             </Link>
-            <Link className="nav-link" aria-current="page" to={"/BadBank/login"}>
+            <Link
+              className="nav-link"
+              aria-current="page"
+              to={"/BadBank/login"}
+            >
               Login
             </Link>
             <Link
@@ -64,7 +82,13 @@ export const Nav = () => {
               All Data
             </Link>
           </div>
+          
+            
+          
         </div>
+        {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
+              Logout
+            </a> : null}
       </div>
     </nav>
   );

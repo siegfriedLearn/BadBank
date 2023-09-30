@@ -13,8 +13,7 @@ export const BalancePage = () => {
   <Card
   bgcolor="light"
     txtcolor="color"
-    header="Deposit"
-    status={status}
+    header="Balance"
     body="Debes hacer login antes de usar esta opción"
   />}</>;
 };
