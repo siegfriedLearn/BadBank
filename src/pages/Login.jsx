@@ -38,17 +38,16 @@ export const Login = () => {
       )
       console.log(consultaLogin())
       setLogin(consultaLogin());
-      setTimeout(() => {
-        window.location.href = "./balance"
-      }, 1300);
-      
+      // setTimeout(() => {
+      //   window.location.href = "./balance"
+      // }, 1300);
       
     } else{
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: `Datos incorrectos`,
-        footer: "Revisa tu correo y tu contraseña",
+        footer: "Revisa tu correo o tu contraseña e intentalo nuevamente",
       });
       
     }
