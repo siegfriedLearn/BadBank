@@ -15,7 +15,7 @@ export const AllData = () => {
           header="Movimientos"
           body={
         
-        <div className="container align-items-center" style={{ width: 1200, margin: 100 }}>
+        <div className="d-flex justify-content-center">
         <table className="table table-bordered" /*hidden={hiddenTable}*/>
           <thead>
             <tr>

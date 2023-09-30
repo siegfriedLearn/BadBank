@@ -6,7 +6,7 @@ const LayoutPublic = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="d-flex justify-content-center">
         {/* Outlet maneja la ruta que se va a cargar */}
         <Outlet />
       </main>
