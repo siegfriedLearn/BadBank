@@ -79,7 +79,7 @@ export const Nav = () => {
               aria-current="page"
               to={"/alldata"}
             >
-              Historico
+              Histórico
             </Link>
           </div>
           
