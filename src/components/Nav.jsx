@@ -35,35 +35,35 @@ export const Nav = () => {
             <Link
               className="nav-link"
               // aria-current="page"
-              to={"/BadBank/"}
+              to={"/"}
             >
               Home
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/BadBank/createaccount"}
+              to={"/createaccount"}
             >
               Crear cuenta
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/BadBank/login"}
+              to={"/login"}
             >
               Inicar sesión
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/BadBank/deposit"}
+              to={"/deposit"}
             >
               Depositar
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/BadBank/withdraw"}
+              to={"/withdraw"}
             >
               Retirar
             </Link>
@@ -77,7 +77,7 @@ export const Nav = () => {
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/BadBank/alldata"}
+              to={"/alldata"}
             >
               Historico
             </Link>
@@ -86,9 +86,9 @@ export const Nav = () => {
             
           
         </div>
-        {/* {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
+        {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
               Logout
-            </a> : null} */}
+            </a> : null}
       </div>
     </nav>
   );

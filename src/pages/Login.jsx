@@ -38,9 +38,9 @@ export const Login = () => {
       )
       console.log(consultaLogin())
       setLogin(consultaLogin());
-      // setTimeout(() => {
-      //   window.location.href = "./balance"
-      // }, 1300);
+      setTimeout(() => {
+        window.location.href = "./balance"
+      }, 1300);
       
     } else{
       Swal.fire({
