@@ -39,7 +39,7 @@ export const Login = () => {
       )
       console.log(consultaLogin())
       setTimeout(() => {
-        window.location.href = "#/alldata"
+        window.location.href = "/"
       }, 1300);
       
     } else{
