@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
        
       },
       {
-         path: "/alldata",
+         path: "alldata",
         //path: "/BadBank/alldata",
         element: <AllData/>,
       },
