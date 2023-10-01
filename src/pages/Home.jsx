@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "../components/Card"
 import { consulta, consultaLogin } from '../helpers/consulta'
 
