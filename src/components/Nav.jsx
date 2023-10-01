@@ -77,7 +77,7 @@ export const Nav = () => {
             <Link
               className="nav-link"
               aria-current="page"
-              to={"/alldata"}
+              to={"#/alldata"}
             >
               Histórico
             </Link>
