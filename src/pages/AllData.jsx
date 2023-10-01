@@ -13,14 +13,32 @@ export const AllData = () => {
           <Card
             bgcolor="light"
             txtcolor="color"
-            header="Info usuario"
+            header="Información de cuenta"
             body={
-              <>
-                <p>Nombre: {user.name}</p>
-                <p>Correo: {user.email}</p>
-                <p>Contraseña: {user.password}</p>
-                <p>Balance: {user.balance}</p>
-              </>
+              <div className="d-flex justify-content-center">
+                <table
+                  className="table table-bordered" /*hidden={hiddenTable}*/
+                >
+                  <tbody>
+                    <tr>
+                      <td>Nombre: </td>
+                      <td>{user.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo: </td>
+                      <td>{user.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Contraseña: </td>
+                      <td>{user.password}</td>
+                    </tr>
+                    <tr>
+                      <td>Balance: </td>
+                      <td>{user.balance}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             }
           />
           <Card

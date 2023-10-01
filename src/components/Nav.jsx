@@ -79,7 +79,7 @@ export const Nav = () => {
               aria-current="page"
               to={"/alldata"}
             >
-              Histórico
+              Información de cuenta
             </Link>
           </div>
           
