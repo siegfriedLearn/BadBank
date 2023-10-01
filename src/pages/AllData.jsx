@@ -13,12 +13,13 @@ export const AllData = () => {
           <Card
             bgcolor="light"
             txtcolor="color"
-            header="Movimientos"
+            header="Info usuario"
             body={
               <>
                 <p>Nombre: {user.name}</p>
                 <p>Correo: {user.email}</p>
-                <p>Password: {user.password}</p>
+                <p>Contraseña: {user.password}</p>
+                <p>Balance: {user.balance}</p>
               </>
             }
           />
