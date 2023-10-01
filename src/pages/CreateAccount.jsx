@@ -47,42 +47,42 @@ export const CreateAccount = () => {
     <Card
       bgcolor="light"
       txtcolor="color"
-      header="Create Account"
+      header="Crear Cuenta"
       status={status}
       body={
         show ? (
           <form onSubmit={handleCreate}>
-            { name ? <>Name</> :<div style={{color:"purple"}}>Debes completar el campo nombre</div>}
+            { name ? <>Nombre</> :<div style={{color:"purple"}}>Debes completar el campo nombre</div>}
             <br />
             <input
               type="text"
               className="form-control"
               id="name"
-              placeholder="Enter name"
+              placeholder="Ingresa tu nombre"
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
               required
             />
             <br />
-            { email ? <>Email</> :<div style={{color:"purple"}}>Debes completar el correo</div>}
+            { email ? <>Correo</> :<div style={{color:"purple"}}>Debes completar el campo correo</div>}
             <br />
             <input
               type="email"
               className="form-control"
               id="email"
-              placeholder="Enter email"
+              placeholder="Ingresa tu correo"
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
               required
             />
             <br />
-            { password.length > 7 ? <>Password</> :<div style={{color:"purple"}}>Tu contraseña debe contener al menos 8 caracteres</div>}
+            { password.length > 7 ? <>Contraseña</> :<div style={{color:"purple"}}>Tu contraseña debe contener al menos 8 caracteres</div>}
             <br />
             <input
               type="password"
               className="form-control"
               id="password"
-              placeholder="Enter password"
+              placeholder="Ingresar tu contraseña"
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
               required
@@ -93,15 +93,15 @@ export const CreateAccount = () => {
               //onClick={handleCreate}
               disabled = {name == "" || email == "" || password.length < 8}
             >
-              Create Account
+              Crear Cuenta
             </button>
             <br />
           </form>
         ) : (
           <>
-            <h5>Success</h5>
+            <h5>Exitoso</h5>
             <button type="submit" className="btn btn-primary" onClick={clearForm}>
-              Add another account
+              Agregar otra cuenta
             </button>
           </>
         )

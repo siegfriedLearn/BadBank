@@ -37,49 +37,49 @@ export const Nav = () => {
               // aria-current="page"
               to={"/BadBank/"}
             >
-              Bad Bank
+              Home
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/createaccount"}
             >
-              Create Account
+              Crear cuenta
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/login"}
             >
-              Login
+              Inicar sesión
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/deposit"}
             >
-              Deposit
+              Depositar
             </Link>
             <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/withdraw"}
             >
-              Withdraw
+              Retirar
             </Link>
-            <Link
+            {/* <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/balance"}
             >
               Balance
-            </Link>
+            </Link> */}
             <Link
               className="nav-link"
               aria-current="page"
               to={"/BadBank/alldata"}
             >
-              All Data
+              Historico
             </Link>
           </div>
           

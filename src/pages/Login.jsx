@@ -69,7 +69,7 @@ export const Login = () => {
             user ? (
               <form onSubmit={(event)=>handleLogin(event)}>
                 {email ? (
-                  <>Email</>
+                  <>Correo</>
                 ) : (
                   <div style={{ color: "purple" }}>
                     Debes completar el correo
@@ -80,14 +80,14 @@ export const Login = () => {
                   type="email"
                   className="form-control"
                   id="email"
-                  placeholder="Enter email"
+                  placeholder="Ingresa el correo"
                   value={email}
                   onChange={(e) => setEmail(e.currentTarget.value)}
                   required
                 />
                 <br />
                 {password.length > 7 ? (
-                  <>Password</>
+                  <>Contraseña</>
                 ) : (
                   <div style={{ color: "purple" }}>
                     Tu contraseña debe contener al menos 8 caracteres
@@ -98,7 +98,7 @@ export const Login = () => {
                   type="password"
                   className="form-control"
                   id="password"
-                  placeholder="Enter password"
+                  placeholder="Ingresa la contraseña password"
                   value={password}
                   onChange={(e) => setPassword(e.currentTarget.value)}
                   required
@@ -109,13 +109,13 @@ export const Login = () => {
                   //onClick={handleLogin}
                   disabled={ email == "" || password.length < 8}
                 >
-                  Login
+                  Ingresar
                 </button>
                 <br />
               </form>
             ) : (
               <>
-                <h5>No se ha creado ningún usuario, por favor registrate antes de hacer login</h5>
+                <h5>No se ha creado ningún usuario, por favor registrate antes de iniciar sesión</h5>
               </>
             )
           }
@@ -126,7 +126,7 @@ export const Login = () => {
           txtcolor="color"
           header="Login"
           status={status}
-          body={<><p>Login Ok</p><p>Puedes acceder a cualquiera de nuestras funcionalidades</p></>}
+          body={<><p>Ingreso correcto</p><p>Puedes acceder a cualquiera de nuestras funcionalidades</p></>}
         />
       )}
     </>

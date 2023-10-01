@@ -69,7 +69,7 @@ console.log(login);
     <Card
       bgcolor="light"
       txtcolor="color"
-      header="Retiro"
+      header="Retiros"
       status={status}
       body={
         show ? (
@@ -91,13 +91,13 @@ console.log(login);
               onClick={handleCreate}
               disabled = {retiro == ""}
             >
-              Retiro
+              Retirar
             </button>
             <br />
           </>
         ) : (
           <>
-            <h5>Success</h5>
+            <h5>Retiro exitoso</h5>
             <button type="submit" className="btn btn-primary" onClick={clearForm}>
               Retirar más
             </button>

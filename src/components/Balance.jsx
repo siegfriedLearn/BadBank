@@ -11,12 +11,12 @@ export const Balance = ({user}) => {
       bgcolor="light"
       txtcolor="color"
       header="Balance"
-      title="This is your account balance"
+      title="Este es el balance de tu cuenta"
       text="Info"
       body={
         <>
-          {user && <p>Name: {user.name}</p>}
-          {user && <p>Balance: {user.balance}</p>}
+          {user && <p>Nombre: {user.name}</p>}
+          {user && <p>Balance: ${user.balance}</p>}
         </>
       }
     />

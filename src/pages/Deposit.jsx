@@ -58,18 +58,18 @@ export const Deposit = () => {
     <Card
       bgcolor="light"
       txtcolor="color"
-      header="Deposit"
+      header="Deposito"
       status={status}
       body={
         show ? (
           <>
-            Deposit
+            Deposito
             <br />
             <input
               type="number"
               className="form-control"
               id="deposit"
-              placeholder="Enter deposit"
+              placeholder="Ingresa el valor que deseas depositar"
               value={deposit}
               onChange={(e) => setDeposit(e.currentTarget.value)}
               required
@@ -80,15 +80,15 @@ export const Deposit = () => {
               onClick={handleCreate}
               disabled = {deposit == ""}
             >
-              Deposit
+              Deposito
             </button>
             <br />
           </>
         ) : (
           <>
-            <h5>Success</h5>
+            <h5>Deposito exitoso</h5>
             <button type="submit" className="btn btn-primary" onClick={clearForm}>
-              Add more
+              Agregar más
             </button>
           </>
         )
