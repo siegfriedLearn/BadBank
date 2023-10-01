@@ -9,7 +9,7 @@ export const Nav = () => {
   function handleLogout(){
     localStorage.removeItem('login');
     setLogin(consultaLogin());
-    window.location.href = "./login";
+    window.location.href = "#/login";
   }
 
   return (
