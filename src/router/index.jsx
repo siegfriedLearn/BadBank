@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createHashRouter } from "react-router-dom";
 
 import { Home } from "../pages/Home";
 import { Deposit } from "../pages/Deposit";
@@ -10,7 +10,7 @@ import { CreateAccount } from "../pages/CreateAccount";
 import { Login } from "../pages/Login";
 import { Withdraw } from "../pages/Withdraw";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <LayoutPublic></LayoutPublic>,
@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
        
       },
       {
-         path: "alldata",
+         path: "/alldata",
         //path: "/BadBank/alldata",
         element: <AllData/>,
       },
