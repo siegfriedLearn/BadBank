@@ -86,9 +86,9 @@ export const Nav = () => {
             
           
         </div>
-        {/* {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
+        {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
               Logout
-            </a> : null} */}
+            </a> : null}
       </div>
     </nav>
   );
