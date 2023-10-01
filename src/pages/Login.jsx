@@ -31,13 +31,13 @@ export const Login = () => {
     if (!validate(password, "password")) return;
     if(user.email === email && user.password == password ){
       localStorage.setItem("login", JSON.stringify('ok'));
+      setLogin(consultaLogin());
       Swal.fire(
         'Muy bien!',
         'Te has logeado correctamente!',
         'Serás redirigido a la página de Balance'
       )
       console.log(consultaLogin())
-      setLogin(consultaLogin());
       setTimeout(() => {
         window.location.href = "#/alldata"
       }, 1300);
