@@ -33,35 +33,35 @@ export const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               // aria-current="page"
               to={"/"}
             >
               Home
             </Link>
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               aria-current="page"
               to={"/createaccount"}
             >
               Crear cuenta
             </Link>
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               aria-current="page"
               to={"/login"}
             >
               Inicar sesión
             </Link>
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               aria-current="page"
               to={"/deposit"}
             >
               Depositar
             </Link>
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               aria-current="page"
               to={"/withdraw"}
             >
@@ -75,7 +75,7 @@ export const Nav = () => {
               Balance
             </Link> */}
             <Link
-              className="nav-link"
+              className="nav-link sombra"
               aria-current="page"
               to={"/alldata"}
             >
@@ -86,7 +86,7 @@ export const Nav = () => {
             
           
         </div>
-        {login ? <a className="nav-link" type="submit" onClick={ handleLogout }>
+        {login ? <a className="nav-link sombra" type="submit" onClick={ handleLogout }>
               Logout
             </a> : null}
       </div>
