@@ -1,14 +1,7 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
-
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import Swal from 'sweetalert2';
 import { Card } from "../components/Card";
-import { consulta } from "../helpers/consulta";
-import { writeUserData } from "../helpers/db";
-import { app } from "../Firebase/firebase";
-
-
+import { consulta } from '../helpers/consulta'
 
 export const CreateAccount = () => {
   const [show, setShow] = useState(true);
@@ -22,51 +15,25 @@ export const CreateAccount = () => {
       setStatus(`Error ${label}`);
       setTimeout(() => setStatus("", 3000));
       Swal.fire({
-        icon: "error",
-        title: "Oops...",
+        icon: 'error',
+        title: 'Oops...',
         text: `El campo ${label} es obligatorio`,
-        footer: "Completa el formulario e intenta nuevamente",
-      });
+        footer: 'Completa el formulario e intenta nuevamente'
+      })
       return false;
     }
     return true;
   }
 
   function handleCreate() {
-    //console.log(name, email, password);
+    
+    console.log(name, email, password);
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    //const user = {name, email, password, balance: 100,transacciones:[]};
-    //localStorage.setItem('user', JSON.stringify(user));
-
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        //const user = {name, email, password, balance: 100,transacciones:[]};
-        localStorage.setItem('user', JSON.stringify(user));
-        writeUserData(userCredential.user.uid, 100)
-        // ...
-        setShow(false);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
-        //Alertar correo ya registrado
-        if(errorCode=='auth/email-already-in-use'){
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `Este correo ya está en uso`,
-          footer: "Por favor utiliza un correo distinto",
-        });
-      }
-      });
-    
+    const user = {name, email, password, balance: 100,transacciones:[]};
+    localStorage.setItem('user', JSON.stringify(user));
+    setShow(false);
   }
 
   function clearForm() {
@@ -85,13 +52,7 @@ export const CreateAccount = () => {
       body={
         show ? (
           <form onSubmit={handleCreate}>
-            {name ? (
-              <>Nombre</>
-            ) : (
-              <div style={{ color: "purple" }}>
-                Debes completar el campo nombre
-              </div>
-            )}
+            { name ? <>Nombre</> :<div style={{color:"purple"}}>Debes completar el campo nombre</div>}
             <br />
             <input
               type="text"
@@ -103,13 +64,7 @@ export const CreateAccount = () => {
               required
             />
             <br />
-            {email ? (
-              <>Correo</>
-            ) : (
-              <div style={{ color: "purple" }}>
-                Debes completar el campo correo
-              </div>
-            )}
+            { email ? <>Correo</> :<div style={{color:"purple"}}>Debes completar el campo correo</div>}
             <br />
             <input
               type="email"
@@ -121,13 +76,7 @@ export const CreateAccount = () => {
               required
             />
             <br />
-            {password.length > 7 ? (
-              <>Contraseña</>
-            ) : (
-              <div style={{ color: "purple" }}>
-                Tu contraseña debe contener al menos 8 caracteres
-              </div>
-            )}
+            { password.length > 7 ? <>Contraseña</> :<div style={{color:"purple"}}>Tu contraseña debe contener al menos 8 caracteres</div>}
             <br />
             <input
               type="password"
@@ -142,7 +91,7 @@ export const CreateAccount = () => {
               type="submit"
               className="btn btn-success mt-3"
               //onClick={handleCreate}
-              disabled={name == "" || email == "" || password.length < 8}
+              disabled = {name == "" || email == "" || password.length < 8}
             >
               Crear Cuenta
             </button>
@@ -151,11 +100,7 @@ export const CreateAccount = () => {
         ) : (
           <>
             <h5>Exitoso</h5>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={clearForm}
-            >
+            <button type="submit" className="btn btn-primary" onClick={clearForm}>
               Agregar otra cuenta
             </button>
           </>

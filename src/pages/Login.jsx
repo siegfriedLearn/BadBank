@@ -1,14 +1,17 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import { Card } from "../components/Card";
-import { consulta, consultaLogin } from "../helpers/consulta";
+import { consultaLogin } from "../helpers/consulta";
+import { createToken } from "../helpers/jwt";
 
 export const Login = () => {
   const [status, setStatus] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(consulta());
   const [login, setLogin] = useState(consultaLogin());
+  
 
   function validate(field, label) {
     if (!field) {
@@ -26,36 +29,43 @@ export const Login = () => {
   }
 
   function handleLogin(event) {
-    event.preventDefault()    //console.log(name, email, password);
+    event.preventDefault(); //console.log(name, email, password);
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    if(user.email === email && user.password == password ){
-      localStorage.setItem("login", JSON.stringify('ok'));
+
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+
+        const token = await createToken(user.uid);
+        
+        localStorage.setItem('token', token);
+        localStorage.setItem("user", JSON.stringify(user));
       setLogin(consultaLogin());
       Swal.fire(
-        'Muy bien!',
-        'Te has logeado correctamente!',
-        'Serás redirigido a la página de Balance'
-      )
-      console.log(consultaLogin())
+        "Muy bien!",
+        "Te has logeado correctamente!",
+        "Serás redirigido a la página de Balance"
+      );
+      console.log(consultaLogin());
       setTimeout(() => {
-        window.location.href = "/"
+        window.location.href = "/";
       }, 1300);
-      
-    } else{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `Datos incorrectos`,
-        footer: "Revisa tu correo o tu contraseña e intentalo nuevamente",
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Datos incorrectos`,
+          footer: "Revisa tu correo o tu contraseña e intentalo nuevamente",
+        });
       });
-      
-    }
-    
-    
+
   }
-
-
 
   return (
     <>
@@ -66,8 +76,8 @@ export const Login = () => {
           header="Login"
           status={status}
           body={
-            user ? (
-              <form onSubmit={(event)=>handleLogin(event)}>
+            (
+              <form onSubmit={(event) => handleLogin(event)}>
                 {email ? (
                   <>Correo</>
                 ) : (
@@ -107,16 +117,12 @@ export const Login = () => {
                   type="submit"
                   className="btn btn-success mt-3"
                   //onClick={handleLogin}
-                  disabled={ email == "" || password.length < 8}
+                  disabled={email == "" || password.length < 8}
                 >
                   Ingresar
                 </button>
                 <br />
               </form>
-            ) : (
-              <>
-                <h5>No se ha creado ningún usuario, por favor registrate antes de iniciar sesión</h5>
-              </>
             )
           }
         />
@@ -126,7 +132,12 @@ export const Login = () => {
           txtcolor="color"
           header="Login"
           status={status}
-          body={<><p>Ingreso correcto</p><p>Puedes acceder a cualquiera de nuestras funcionalidades</p></>}
+          body={
+            <>
+              <p>Ingreso correcto</p>
+              <p>Puedes acceder a cualquiera de nuestras funcionalidades</p>
+            </>
+          }
         />
       )}
     </>
