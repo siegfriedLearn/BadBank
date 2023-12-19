@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import { Card } from "../components/Card";
 import { consulta } from "../helpers/consulta";
@@ -45,7 +45,14 @@ export const CreateAccount = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        
         //const user = {name, email, password, balance: 100,transacciones:[]};
+        updateProfile(user, { displayName: name }).catch(
+          (err) => console.log(err)
+        );
+        console.log(user.providerData[0].displayName)
+
+        
         localStorage.setItem('user', JSON.stringify(user));
         writeUserData(userCredential.user.uid, 100)
         // ...

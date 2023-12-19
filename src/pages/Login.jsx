@@ -38,11 +38,12 @@ export const Login = () => {
       .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
+        
 
         const token = await createToken(user.uid);
         
         localStorage.setItem('token', token);
-        localStorage.setItem("user", JSON.stringify(user));
+        // localStorage.setItem("user", JSON.stringify(user));
       setLogin(consultaLogin());
       Swal.fire(
         "Muy bien!",

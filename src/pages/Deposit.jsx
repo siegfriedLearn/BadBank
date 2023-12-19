@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from 'sweetalert2';
 import { Card } from "../components/Card";
 import { Balance } from "../components/Balance";
 import { consulta, consultaLogin } from '../helpers/consulta'
+import { consultarBalance, cambiarBalance } from '../helpers/db'
 
+const token = localStorage.getItem("token");
 
-export const Deposit = () => {
+export const Deposit =  () => {
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
   const [deposit, setDeposit] = useState("");
-  const [user, setUser] = useState(consulta());
+  const [user, setUser] =  useState("");
   const [login, setLogin] = useState(consultaLogin());
-  
-//console.log(login);
+
+
+  useEffect(()=>{
+    async function info(){
+      const resp = await consultarBalance(token);
+      setUser(resp);
+    }
+    info()
+  }, []);
 
   function validate(field, label) {
     if (!field) {
@@ -33,14 +42,13 @@ export const Deposit = () => {
     return true;
   }
 
-  function handleCreate() {
+  async function handleCreate() {
     if (!validate(deposit, "deposit")) return;
-    const user = JSON.parse(localStorage.getItem("user"));
+    const tipo = "Deposito";
     let newBalance = parseInt(user.balance)+ parseInt(deposit);
-    user.balance = newBalance;
-    user.transacciones.push({tipo:"Deposito", value: deposit, fecha: new Date()});
-    localStorage.setItem('user', JSON.stringify(user));
-    setUser(consulta());
+    cambiarBalance(token, newBalance, tipo, parseInt(deposit))
+    const resp = await consultarBalance(token);
+    setUser(resp);
     setShow(false);
   }
 

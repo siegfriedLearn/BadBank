@@ -4,6 +4,8 @@ import { Card } from "../components/Card";
 export const Balance = ({user}) => {
 
   //const [user, setUser] = useState(info);
+
+  //console.log(user)
   
 
   return (
