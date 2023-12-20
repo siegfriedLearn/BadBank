@@ -41,20 +41,28 @@ export const CreateAccount = () => {
     //localStorage.setItem('user', JSON.stringify(user));
 
     const auth = getAuth();
+
+    
+    
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed up
+        
+        
         const user = userCredential.user;
+
+        await updateProfile(userCredential.user, { displayName: name }).catch(
+          (err) => console.log(err));
+        //console.log(user.providerData[0].displayName)
+        
         
         //const user = {name, email, password, balance: 100,transacciones:[]};
-        updateProfile(user, { displayName: name }).catch(
-          (err) => console.log(err)
-        );
-        console.log(user.providerData[0].displayName)
+        
+
+        localStorage.setItem('user', JSON.stringify(user));
+        writeUserData(userCredential.user.uid, 100);
 
         
-        localStorage.setItem('user', JSON.stringify(user));
-        writeUserData(userCredential.user.uid, 100)
         // ...
         setShow(false);
       })

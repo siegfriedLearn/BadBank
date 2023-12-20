@@ -4,10 +4,12 @@ import { Link, redirect } from "react-router-dom";
 import { consulta, consultaLogin } from "../helpers/consulta";
 
 export const Nav = () => {
+  const [user] = useState(consulta());
   const [login, setLogin] = useState(consultaLogin());
 
   function handleLogout(){
-    localStorage.removeItem('login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setLogin(consultaLogin());
     window.location.href = "#/login";
   }
@@ -46,11 +48,7 @@ export const Nav = () => {
             >
               Crear cuenta
             </Link>
-            <Link
-              className="nav-link sombra"
-              aria-current="page"
-              to={"/login"}
-            >
+            <Link className="nav-link sombra" aria-current="page" to={"/login"}>
               Inicar sesión
             </Link>
             <Link
@@ -82,13 +80,15 @@ export const Nav = () => {
               Información de cuenta
             </Link>
           </div>
-          
-            
-          
         </div>
-        {login ? <a className="nav-link sombra" type="submit" onClick={ handleLogout }>
+        {login ? (
+          <div>
+            {user.name}
+            <a className="nav-link sombra" type="submit" onClick={handleLogout}>
               Logout
-            </a> : null}
+            </a>
+          </div>
+        ) : null}
       </div>
     </nav>
   );

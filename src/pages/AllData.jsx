@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { consultarBalance } from '../helpers/db'
 import { consulta, consultaLogin } from "../helpers/consulta";
 import { Card } from "../components/Card";
 
+const token = localStorage.getItem("token");
+
 export const AllData = () => {
-  const [user, setUser] = useState(consulta());
-  const [login, setLogin] = useState(consultaLogin());
+  const [user] = useState(consulta());
+  const [info, setInfo] = useState('');
+  const [login] = useState(consultaLogin());
+
+
+  useEffect(()=>{
+    async function info(){
+      const resp = await consultarBalance(token);
+      setInfo(resp);
+    }
+    info()
+  }, []);
+
+  const {transacciones} = info;
+  const newArray = [transacciones]
 
   return (
     <>
@@ -29,17 +46,14 @@ export const AllData = () => {
                       <td>{user.email}</td>
                     </tr>
                     <tr>
-                      <td>Contraseña: </td>
-                      <td>{user.password}</td>
-                    </tr>
-                    <tr>
                       <td>Balance: </td>
-                      <td>{user.balance}</td>
+                      <td>{info.balance}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             }
+            
           />
           <Card
             bgcolor="light"
@@ -58,12 +72,13 @@ export const AllData = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {user.transacciones.map((transaccion) => (
-                      <tr key={transaccion.fecha}>
-                        <td>{transaccion.tipo || ""}</td>
-                        <td>{transaccion.value || ""}</td>
-                        <td>{transaccion.fecha || ""}</td>
-                      </tr>
+                    {newArray.map((transaccion) => (
+                      console.log(transaccion.[])
+                      // <tr key={transaccion.fecha}>
+                      //   <td>{transaccion.tipo || ""}</td>
+                      //   <td>{transaccion.value || ""}</td>
+                      //   <td>{transaccion.fecha || ""}</td>
+                      // </tr>
                     ))}
                   </tbody>
                 </table>

@@ -43,7 +43,12 @@ export const Login = () => {
         const token = await createToken(user.uid);
         
         localStorage.setItem('token', token);
-        // localStorage.setItem("user", JSON.stringify(user));
+        const { displayName, email } = user
+        const infoUser = {
+          name: displayName,
+          email
+        }
+        localStorage.setItem("user", JSON.stringify(infoUser));
       setLogin(consultaLogin());
       Swal.fire(
         "Muy bien!",
