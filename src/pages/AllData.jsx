@@ -72,14 +72,16 @@ export const AllData = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {newArray.map((transaccion) => (
-                      console.log(transaccion.[])
+                    {
+                    // newArray.map((transaccion) => (
+                      // console.log(transaccion.[])
                       // <tr key={transaccion.fecha}>
                       //   <td>{transaccion.tipo || ""}</td>
                       //   <td>{transaccion.value || ""}</td>
                       //   <td>{transaccion.fecha || ""}</td>
                       // </tr>
-                    ))}
+                    // ))
+                    }
                   </tbody>
                 </table>
               </div>

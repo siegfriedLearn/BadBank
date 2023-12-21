@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { Card } from "../components/Card";
 import { consultaLogin } from "../helpers/consulta";
 import { createToken } from "../helpers/jwt";
+import { writeUserData } from "../helpers/db";
+
 
 export const Login = () => {
   const [status, setStatus] = useState("");
@@ -55,7 +57,7 @@ export const Login = () => {
         "Te has logeado correctamente!",
         "Serás redirigido a la página de Balance"
       );
-      console.log(consultaLogin());
+      //console.log(consultaLogin());
       setTimeout(() => {
         window.location.href = "/";
       }, 1300);
@@ -70,8 +72,51 @@ export const Login = () => {
           footer: "Revisa tu correo o tu contraseña e intentalo nuevamente",
         });
       });
-
   }
+
+    const handleGoogle = () => {
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth();
+       signInWithPopup(auth, provider)
+        .then(async (result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+          const t = await createToken(user.uid);
+        
+        localStorage.setItem('token', t);
+        setLogin(consultaLogin());
+        const { displayName, email } = user
+        const infoUser = {
+          name: displayName,
+          email
+        }
+        localStorage.setItem("user", JSON.stringify(infoUser));
+        writeUserData(user.uid, 100);
+          Swal.fire(
+            "Muy bien!",
+            "Te has logeado correctamente!",
+            "Serás redirigido a la página de Balance"
+          );
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1300);
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        });
+    }
 
   return (
     <>
@@ -83,6 +128,7 @@ export const Login = () => {
           status={status}
           body={
             (
+              <>
               <form onSubmit={(event) => handleLogin(event)}>
                 {email ? (
                   <>Correo</>
@@ -129,6 +175,15 @@ export const Login = () => {
                 </button>
                 <br />
               </form>
+
+              <button
+                  type="submit"
+                  className="btn btn-success mt-3"
+                  onClick={handleGoogle}
+                  
+                >Google</button>
+              </>
+              
             )
           }
         />
