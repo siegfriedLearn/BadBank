@@ -99,8 +99,8 @@ export const CreateAccount = () => {
       }
       localStorage.setItem("user", JSON.stringify(infoUser));
 
+      /* consultar si el usuario ya existe para no sobreescribir la info en la bd */ 
       const resp = await consultarBalance(t);
-
       if(resp.status==='No data available'){
         writeUserData(user.uid, 100);
       }
