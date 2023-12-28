@@ -7,18 +7,23 @@ import { consultarBalance, cambiarBalance } from '../helpers/db'
 
 const token = localStorage.getItem("token");
 
+
 export const Deposit =  () => {
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
   const [deposit, setDeposit] = useState("");
   const [user, setUser] =  useState("");
+  const [balance, setBalance] =  useState("");
   const [login, setLogin] = useState(consultaLogin());
 
 
   useEffect(()=>{
-    async function info(){
+    const info= async ()=>{
       const resp = await consultarBalance(token);
-      setUser(resp);
+      const usuario = await consulta();
+      usuario.balance = resp.balance;
+      console.log(resp.balance)
+      setUser(usuario);
     }
     info()
   }, []);

@@ -7,22 +7,25 @@ import { Card } from "../components/Card";
 const token = localStorage.getItem("token");
 
 export const AllData = () => {
-  const [user] = useState(consulta());
-  const [info, setInfo] = useState('');
+
+
+  const [user, setUser] = useState(consulta());
   const [login] = useState(consultaLogin());
 
-
   useEffect(()=>{
-    async function info(){
+    const informacion = async ()=>{
+
       const resp = await consultarBalance(token);
-      setInfo(resp);
-    }
-    info()
-  }, []);
+      const usuario = await consulta();
+      usuario.balance = resp.balance;
+      usuario.transacciones = resp.transacciones
+      setUser(usuario);
+      
+     }
+      informacion()
+   }, []);
 
-  const {transacciones} = info;
-  const newArray = [transacciones]
-
+  //console.log(info)
   return (
     <>
       {login ? (
@@ -47,7 +50,7 @@ export const AllData = () => {
                     </tr>
                     <tr>
                       <td>Balance: </td>
-                      <td>{info.balance}</td>
+                      <td>{user.balance}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -73,14 +76,14 @@ export const AllData = () => {
                   </thead>
                   <tbody>
                     {
-                    // newArray.map((transaccion) => (
-                      // console.log(transaccion.[])
-                      // <tr key={transaccion.fecha}>
-                      //   <td>{transaccion.tipo || ""}</td>
-                      //   <td>{transaccion.value || ""}</td>
-                      //   <td>{transaccion.fecha || ""}</td>
-                      // </tr>
-                    // ))
+                    user.transacciones?.map((transaccion) => (
+                      <tr key={transaccion.fecha}>
+                        <td>{transaccion.tipo || ""}</td>
+                        <td>{transaccion.value || ""}</td>
+                        <td>{transaccion.fecha || ""}</td>
+                      </tr>
+                    ))
+                    //JSON.stringify(user.transacciones)
                     }
                   </tbody>
                 </table>

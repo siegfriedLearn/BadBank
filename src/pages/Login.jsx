@@ -74,7 +74,7 @@ export const Login = () => {
       });
   }
 
-    const handleGoogle = () => {
+    const handleGoogle = async() => {
       const provider = new GoogleAuthProvider();
       const auth = getAuth();
        signInWithPopup(auth, provider)

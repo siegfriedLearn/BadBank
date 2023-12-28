@@ -20,7 +20,9 @@ export const Withdraw = () => {
   useEffect(()=>{
     async function info(){
       const resp = await consultarBalance(token);
-      setUser(resp);
+      const usuario = await consulta();
+      usuario.balance = resp.balance;
+      setUser(usuario);
     }
     info()
   }, []);

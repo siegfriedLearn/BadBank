@@ -25,8 +25,8 @@ export function writeUserData(uid, balance) {
      const data = await fetch(`${urlBase}/api/history/balance`, options)
      const resp = await data.json();
     
-     //console.log(resp.history)
-    return resp.history;
+     console.log(resp)
+    return resp;
   };
 
   export const cambiarBalance = async ( token, balance, tipo, valor ) => {
