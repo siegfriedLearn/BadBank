@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { Card } from "../components/Card";
 import { consulta } from "../helpers/consulta";
 import { writeUserData } from "../helpers/db";
+import { createToken } from "../helpers/jwt";
 import { app } from "../Firebase/firebase";
+import { consultarBalance } from '../helpers/db'
 
 
 
@@ -46,18 +48,11 @@ export const CreateAccount = () => {
     
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-        // Signed up
-        
         
         const user = userCredential.user;
 
         await updateProfile(userCredential.user, { displayName: name }).catch(
           (err) => console.log(err));
-        //console.log(user.providerData[0].displayName)
-        
-        
-        //const user = {name, email, password, balance: 100,transacciones:[]};
-        
 
         localStorage.setItem('user', JSON.stringify(user));
         writeUserData(userCredential.user.uid, 100);
@@ -81,7 +76,54 @@ export const CreateAccount = () => {
         });
       }
       });
-    
+  }
+  const handleGoogle = async() => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+     signInWithPopup(auth, provider)
+      .then(async (result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+        const t = await createToken(user.uid);
+      
+      localStorage.setItem('token', t);
+      const { displayName, email } = user
+      const infoUser = {
+        name: displayName,
+        email
+      }
+      localStorage.setItem("user", JSON.stringify(infoUser));
+
+      const resp = await consultarBalance(t);
+
+      if(resp.status==='No data available'){
+        writeUserData(user.uid, 100);
+      }
+
+        Swal.fire(
+          "Muy bien!",
+          "Te has logeado correctamente!",
+          "Serás redirigido a la página de Balance"
+        );
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1300);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   }
 
   function clearForm() {
@@ -162,6 +204,12 @@ export const CreateAccount = () => {
               Crear Cuenta
             </button>
             <br />
+            <button
+                  type="submit"
+                  className="btn btn-success mt-3"
+                  onClick={handleGoogle}
+                  
+                >Google</button>
           </form>
         ) : (
           <>

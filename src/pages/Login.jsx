@@ -6,6 +6,7 @@ import { Card } from "../components/Card";
 import { consultaLogin } from "../helpers/consulta";
 import { createToken } from "../helpers/jwt";
 import { writeUserData } from "../helpers/db";
+import { consultarBalance } from '../helpers/db'
 
 
 export const Login = () => {
@@ -81,9 +82,11 @@ export const Login = () => {
         .then(async (result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const credential = GoogleAuthProvider.credentialFromResult(result);
+          //console.log(credential)
           const token = credential.accessToken;
           // The signed-in user info.
           const user = result.user;
+          //console.log(user)
           // IdP data available using getAdditionalUserInfo(result)
           // ...
           const t = await createToken(user.uid);
@@ -96,7 +99,13 @@ export const Login = () => {
           email
         }
         localStorage.setItem("user", JSON.stringify(infoUser));
-        writeUserData(user.uid, 100);
+
+        /* consultar si el usuario ya existe para no sobreescribir la info en la bd */ 
+        const resp = await consultarBalance(t);
+        if(resp.status==='No data available'){
+          writeUserData(user.uid, 100);
+        }
+        
           Swal.fire(
             "Muy bien!",
             "Te has logeado correctamente!",
