@@ -31,7 +31,7 @@ export const Login = () => {
     return true;
   }
 
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault(); //console.log(name, email, password);
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
@@ -187,10 +187,10 @@ export const Login = () => {
 
               <button
                   type="submit"
-                  className="btn btn-success mt-3"
+                  className="btn btn-primary mt-3"
                   onClick={handleGoogle}
                   
-                >Google</button>
+                >Ingresa con Google</button>
               </>
               
             )

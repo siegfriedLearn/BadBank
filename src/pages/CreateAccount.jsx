@@ -34,18 +34,14 @@ export const CreateAccount = () => {
     return true;
   }
 
-  function handleCreate() {
+  async function handleCreate() {
     //console.log(name, email, password);
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    //const user = {name, email, password, balance: 100,transacciones:[]};
-    //localStorage.setItem('user', JSON.stringify(user));
 
     const auth = getAuth();
 
-    
-    
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         
@@ -56,8 +52,6 @@ export const CreateAccount = () => {
 
         localStorage.setItem('user', JSON.stringify(user));
         writeUserData(userCredential.user.uid, 100);
-
-        
         // ...
         setShow(false);
       })
@@ -206,10 +200,10 @@ export const CreateAccount = () => {
             <br />
             <button
                   type="submit"
-                  className="btn btn-success mt-3"
+                  className="btn btn-primary mt-3"
                   onClick={handleGoogle}
                   
-                >Google</button>
+                >Ingresa con Google</button>
           </form>
         ) : (
           <>
