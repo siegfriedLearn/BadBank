@@ -49,7 +49,7 @@ export const Nav = () => {
               Crear cuenta
             </Link>
             <Link className="nav-link sombra" aria-current="page" to={"/login"}>
-              Inicar sesión
+              Iniciar sesión
             </Link>
             <Link
               className="nav-link sombra"

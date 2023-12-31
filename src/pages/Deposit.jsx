@@ -26,7 +26,7 @@ export const Deposit =  () => {
       setUser(usuario);
     }
     info()
-  }, []);
+  }, [user]);
 
   function validate(field, label) {
     if (!field) {

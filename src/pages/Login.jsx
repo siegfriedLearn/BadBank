@@ -55,7 +55,7 @@ export const Login = () => {
       setLogin(consultaLogin());
       Swal.fire(
         "Muy bien!",
-        "Te has logeado correctamente!",
+        "Te has logueado correctamente!",
         "Serás redirigido a la página de Balance"
       );
       //console.log(consultaLogin());
@@ -108,7 +108,7 @@ export const Login = () => {
         
           Swal.fire(
             "Muy bien!",
-            "Te has logeado correctamente!",
+            "Te has logueado correctamente!",
             "Serás redirigido a la página de Balance"
           );
           setTimeout(() => {

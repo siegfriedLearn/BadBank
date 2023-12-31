@@ -25,7 +25,7 @@ export const Withdraw = () => {
       setUser(usuario);
     }
     info()
-  }, []);
+  }, [user]);
 
   function validate(field, label) {
     if (!field) {
