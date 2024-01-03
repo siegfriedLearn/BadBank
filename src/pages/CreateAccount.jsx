@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 
 import { Card } from "../components/Card";
-import { consulta } from "../helpers/consulta";
 import { writeUserData } from "../helpers/db";
 import { createToken } from "../helpers/jwt";
 import { app } from "../Firebase/firebase";
