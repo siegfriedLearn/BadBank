@@ -65,6 +65,13 @@ export const Nav = () => {
             >
               Retirar
             </Link>
+            <Link
+              className="nav-link sombra"
+              aria-current="page"
+              to={"/transfer"}
+            >
+              Transferir
+            </Link>
             {/* <Link
               className="nav-link"
               aria-current="page"

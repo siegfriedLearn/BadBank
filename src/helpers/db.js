@@ -45,3 +45,21 @@ export function writeUserData(uid, balance) {
      //console.log(resp.history)
     return resp.history;
   };
+
+
+  export const envio = async ( email, valor, personaQueEnvia, token ) => {
+    const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": token
+        },
+        body: JSON.stringify({email, valor, personaQueEnvia})
+      };
+  
+     const data = await fetch(`${urlBase}/api/history/transfer`, options)
+     const resp = await data.json();
+    
+     //console.log(resp.history)
+    return resp;
+  };

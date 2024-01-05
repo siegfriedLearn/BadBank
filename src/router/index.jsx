@@ -9,6 +9,7 @@ import { BalancePage } from "../pages/BalancePage";
 import { CreateAccount } from "../pages/CreateAccount";
 import { Login } from "../pages/Login";
 import { Withdraw } from "../pages/Withdraw";
+import { Transfer } from "../pages/Transfer";
 
 export const router = createHashRouter([
   {
@@ -53,6 +54,11 @@ export const router = createHashRouter([
         //path: "/BadBank/withdraw",
         element: <Withdraw />,
       },
+      {
+        path: "/transfer",
+       //path: "/BadBank/withdraw",
+       element: <Transfer />,
+     },
     ],
   },
 ]);

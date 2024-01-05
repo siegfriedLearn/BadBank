@@ -1,6 +1,4 @@
-//import { app } from "../Firebase/firebase";
-
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { urlBase } from "../api/api.js";
 
 export function consulta() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -14,3 +12,5 @@ export function consultaLogin() {
   }
   return true;
 }
+
+
